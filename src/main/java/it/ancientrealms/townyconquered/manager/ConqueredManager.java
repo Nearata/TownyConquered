@@ -1,15 +1,16 @@
-package com.bitbucket.fcdev.townyconquered.manager;
+package it.ancientrealms.townyconquered.manager;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import com.bitbucket.fcdev.townyconquered.TownyConquered;
 import com.palmergames.bukkit.towny.TownyUniverse;
 import com.palmergames.bukkit.towny.exceptions.AlreadyRegisteredException;
 import com.palmergames.bukkit.towny.exceptions.NotRegisteredException;
 import com.palmergames.bukkit.towny.object.Nation;
 import com.palmergames.bukkit.towny.object.Town;
+
+import it.ancientrealms.townyconquered.TownyConquered;
 
 public final class ConqueredManager
 {

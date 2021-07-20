@@ -1,15 +1,16 @@
-package com.bitbucket.fcdev.townyconquered;
+package it.ancientrealms.townyconquered;
 
 import java.util.UUID;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.bitbucket.fcdev.townyconquered.command.SetConquerorCommand;
-import com.bitbucket.fcdev.townyconquered.listener.ConquerorListener;
-import com.bitbucket.fcdev.townyconquered.manager.ConqueredManager;
-import com.bitbucket.fcdev.townyconquered.manager.ITown;
-import com.bitbucket.fcdev.townyconquered.manager.TaxType;
 import com.palmergames.bukkit.towny.TownyUniverse;
+
+import it.ancientrealms.townyconquered.command.SetConquerorCommand;
+import it.ancientrealms.townyconquered.listener.ConquerorListener;
+import it.ancientrealms.townyconquered.manager.ConqueredManager;
+import it.ancientrealms.townyconquered.manager.ITown;
+import it.ancientrealms.townyconquered.manager.TaxType;
 
 public final class TownyConquered extends JavaPlugin
 {

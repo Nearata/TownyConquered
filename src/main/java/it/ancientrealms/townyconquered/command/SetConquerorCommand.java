@@ -1,4 +1,4 @@
-package com.bitbucket.fcdev.townyconquered.command;
+package it.ancientrealms.townyconquered.command;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,11 +12,12 @@ import org.bukkit.util.StringUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import com.bitbucket.fcdev.townyconquered.TownyConquered;
-import com.bitbucket.fcdev.townyconquered.manager.TaxType;
 import com.palmergames.bukkit.towny.TownyUniverse;
 import com.palmergames.bukkit.towny.object.Nation;
 import com.palmergames.bukkit.towny.object.Town;
+
+import it.ancientrealms.townyconquered.TownyConquered;
+import it.ancientrealms.townyconquered.manager.TaxType;
 
 public final class SetConquerorCommand implements TabExecutor
 {

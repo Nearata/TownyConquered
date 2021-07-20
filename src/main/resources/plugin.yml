@@ -1,6 +1,6 @@
 name: TownyConquered
-main: com.bitbucket.fcdev.townyconquered.TownyConquered
-version: 1.0
+main: it.ancientrealms.townyconquered.TownyConquered
+version: 1.0.0
 api-version: 1.13
 depend:
   - Towny

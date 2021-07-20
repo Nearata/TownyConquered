@@ -1,16 +1,17 @@
-package com.bitbucket.fcdev.townyconquered.listener;
+package it.ancientrealms.townyconquered.listener;
 
 import java.util.Optional;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-import com.bitbucket.fcdev.townyconquered.TownyConquered;
-import com.bitbucket.fcdev.townyconquered.manager.ITown;
 import com.palmergames.bukkit.towny.TownySettings;
 import com.palmergames.bukkit.towny.event.NationRemoveTownEvent;
 import com.palmergames.bukkit.towny.event.time.dailytaxes.PreTownPaysNationTaxEvent;
 import com.palmergames.bukkit.towny.object.Town;
+
+import it.ancientrealms.townyconquered.TownyConquered;
+import it.ancientrealms.townyconquered.manager.ITown;
 
 public final class ConquerorListener implements Listener
 {

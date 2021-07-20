@@ -1,4 +1,4 @@
-package com.bitbucket.fcdev.townyconquered.manager;
+package it.ancientrealms.townyconquered.manager;
 
 import java.util.UUID;
 

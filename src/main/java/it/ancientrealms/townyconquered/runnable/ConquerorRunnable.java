@@ -1,4 +1,4 @@
-package com.bitbucket.fcdev.townyconquered.runnable;
+package it.ancientrealms.townyconquered.runnable;
 
 import org.bukkit.scheduler.BukkitRunnable;
 
