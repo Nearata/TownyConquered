@@ -50,7 +50,7 @@ public final class ConqueredManager
         {
             town.setNation(nation);
         }
-        catch (AlreadyRegisteredException e1)
+        catch (AlreadyRegisteredException e)
         {
         }
 

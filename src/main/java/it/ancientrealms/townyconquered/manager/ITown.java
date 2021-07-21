@@ -6,9 +6,9 @@ public final class ITown
 {
     private final UUID townUUID;
     private final UUID nationUUID;
-    private String ends;
-    private String tax;
-    private TaxType taxType;
+    private final String ends;
+    private final String tax;
+    private final TaxType taxType;
 
     public ITown(UUID townUUID, UUID nationUUID, String ends, String tax, TaxType taxType)
     {
