@@ -38,8 +38,6 @@ public final class TownyConquered extends JavaPlugin
             final String taxType = this.getConfig().getString(String.format("towns.%s.tax_type", tuuid));
 
             this.conqueredManager.getTowns().add(new ITown(UUID.fromString(tuuid), UUID.fromString(nuuid), tax, TaxType.fromLabel(taxType)));
-            
-            this.getLogger().info(String.valueOf(TownyUniverse.getInstance().getTown(UUID.fromString(tuuid)).isConquered()));
         }
     }
 
