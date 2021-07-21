@@ -68,7 +68,7 @@ public final class SetConqueredCommand implements TabExecutor
 
         if (town == null)
         {
-            TownyMessaging.sendErrorMsg(sender, "This town doesn't exist!");
+            TownyMessaging.sendErrorMsg(sender, "This town doesn't exist.");
             return true;
         }
 
@@ -80,13 +80,13 @@ public final class SetConqueredCommand implements TabExecutor
 
         if (nation == null)
         {
-            TownyMessaging.sendErrorMsg(sender, "This nation doesn't exist!");
+            TownyMessaging.sendErrorMsg(sender, "This nation doesn't exist.");
             return true;
         }
 
         if (taxType == null)
         {
-            TownyMessaging.sendErrorMsg(sender, "This type of tax doesn't exist!");
+            TownyMessaging.sendErrorMsg(sender, "This type of tax doesn't exist.");
             return true;
         }
 
