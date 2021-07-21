@@ -72,6 +72,12 @@ public final class SetConqueredCommand implements TabExecutor
             return true;
         }
 
+        if (this.plugin.getConqueredManager().getTown(town).isPresent())
+        {
+            TownyMessaging.sendErrorMsg(sender, "This town is already conquered.");
+            return true;
+        }
+
         if (nation == null)
         {
             TownyMessaging.sendErrorMsg(sender, "This nation doesn't exist!");
