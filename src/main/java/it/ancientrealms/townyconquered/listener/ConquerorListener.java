@@ -78,9 +78,8 @@ public final class ConquerorListener implements Listener
     public void nationRemoveTown(NationRemoveTownEvent event)
     {
         final Town town = event.getTown();
-        final Optional<ITown> itown = this.plugin.getConqueredManager().getTown(town);
 
-        if (itown.isPresent())
+        if (this.plugin.getConqueredManager().getTown(town).isPresent())
         {
             this.plugin.getConqueredManager().removeTown(town);
         }
@@ -90,9 +89,8 @@ public final class ConquerorListener implements Listener
     public void nationPreTownLeave(NationPreTownLeaveEvent event)
     {
         final Town town = event.getTown();
-        final Optional<ITown> itown = this.plugin.getConqueredManager().getTown(town);
 
-        if (itown.isPresent())
+        if (this.plugin.getConqueredManager().getTown(town).isPresent())
         {
             event.setCancelled(true);
             event.setCancelMessage("Your town can't leave the nation.");
