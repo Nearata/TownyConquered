@@ -88,11 +88,19 @@ public final class ConqueredManager
         this.plugin.getConfig().set(String.format("towns.%s", town.getUUID()), null);
         this.plugin.saveConfig();
         this.plugin.reloadConfig();
+        
+        try
+        {
+            TownyMessaging.sendGlobalMessage(String.format("The town %s is no longer under the control of the nation %s.", town.getName(), town.getNation().getName()));
+        }
+        catch (NotRegisteredException e)
+        {
+        }
     }
 
     public Optional<ITown> getTown(Town town)
     {
-        return this.towns.stream().filter(t -> t.getTownUUID() == town.getUUID()).findAny();
+        return this.towns.stream().filter(t -> t.getTownUUID().equals(town.getUUID())).findAny();
     }
 
     public List<ITown> getListTowns()
