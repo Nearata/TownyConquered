@@ -44,7 +44,7 @@ public final class SetConqueredCommand implements TabExecutor
             StringUtil.copyPartialMatches(args[1], this.towny.getNations().stream().map(t -> t.getName()).toList(), s);
             break;
         case 5:
-            StringUtil.copyPartialMatches(args[4], Arrays.stream(TaxType.values()).map(t -> t.label).collect(Collectors.toList()), s);
+            StringUtil.copyPartialMatches(args[4], Arrays.stream(TaxType.values()).map(t -> t.getLabel()).collect(Collectors.toList()), s);
             break;
         }
 

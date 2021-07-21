@@ -23,4 +23,9 @@ public enum TaxType
 
         return null;
     }
+
+    public String getLabel()
+    {
+        return this.label;
+    }
 }

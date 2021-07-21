@@ -72,7 +72,7 @@ public final class ConqueredManager
         this.plugin.getConfig().set(String.format("towns.%s.nation_uuid", townUUID), nation.getUUID().toString());
         this.plugin.getConfig().set(String.format("towns.%s.ends", townUUID), ends);
         this.plugin.getConfig().set(String.format("towns.%s.tax", townUUID), tax);
-        this.plugin.getConfig().set(String.format("towns.%s.tax_type", townUUID), taxType.label);
+        this.plugin.getConfig().set(String.format("towns.%s.tax_type", townUUID), taxType.getLabel());
         this.plugin.saveConfig();
         this.plugin.reloadConfig();
 
