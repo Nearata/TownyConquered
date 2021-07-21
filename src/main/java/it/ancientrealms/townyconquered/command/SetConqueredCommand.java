@@ -12,6 +12,7 @@ import org.bukkit.util.StringUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import com.palmergames.bukkit.towny.TownyMessaging;
 import com.palmergames.bukkit.towny.TownyUniverse;
 import com.palmergames.bukkit.towny.object.Nation;
 import com.palmergames.bukkit.towny.object.Town;
@@ -19,12 +20,12 @@ import com.palmergames.bukkit.towny.object.Town;
 import it.ancientrealms.townyconquered.TownyConquered;
 import it.ancientrealms.townyconquered.manager.TaxType;
 
-public final class SetConquerorCommand implements TabExecutor
+public final class SetConqueredCommand implements TabExecutor
 {
     private final TownyUniverse towny = TownyUniverse.getInstance();
     private final TownyConquered plugin;
 
-    public SetConquerorCommand(TownyConquered plugin)
+    public SetConqueredCommand(TownyConquered plugin)
     {
         this.plugin = plugin;
     }
@@ -55,7 +56,7 @@ public final class SetConquerorCommand implements TabExecutor
     {
         if (args.length != 5)
         {
-            sender.sendMessage(this.plugin.getCommand("setconqueror").getUsage());
+            TownyMessaging.sendErrorMsg(sender, this.plugin.getCommand("setconquered").getUsage());
             return true;
         }
 
@@ -65,21 +66,21 @@ public final class SetConquerorCommand implements TabExecutor
         final String tax = args[3];
         final TaxType taxType = TaxType.fromLabel(args[4]);
 
-        if (taxType == null)
+        if (town == null)
         {
-            sender.sendMessage("Questo tipo di tassa non esiste!");
+            TownyMessaging.sendErrorMsg(sender, "This town doesn't exist!");
             return true;
         }
 
         if (nation == null)
         {
-            sender.sendMessage("La nazione non esiste!");
+            TownyMessaging.sendErrorMsg(sender, "This nation doesn't exist!");
             return true;
         }
 
-        if (town == null)
+        if (taxType == null)
         {
-            sender.sendMessage("La town non esiste!");
+            TownyMessaging.sendErrorMsg(sender, "This type of tax doesn't exist!");
             return true;
         }
 

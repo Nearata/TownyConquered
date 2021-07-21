@@ -4,9 +4,7 @@ import java.util.UUID;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.palmergames.bukkit.towny.TownyUniverse;
-
-import it.ancientrealms.townyconquered.command.SetConquerorCommand;
+import it.ancientrealms.townyconquered.command.SetConqueredCommand;
 import it.ancientrealms.townyconquered.listener.ConquerorListener;
 import it.ancientrealms.townyconquered.manager.ConqueredManager;
 import it.ancientrealms.townyconquered.manager.ITown;
@@ -24,8 +22,8 @@ public final class TownyConquered extends JavaPlugin
 
         this.conqueredManager = new ConqueredManager(this);
 
-        this.getCommand("setconqueror").setExecutor(new SetConquerorCommand(this));
-        this.getCommand("setconqueror").setTabCompleter(new SetConquerorCommand(this));
+        this.getCommand("setconquered").setExecutor(new SetConqueredCommand(this));
+        this.getCommand("setconquered").setTabCompleter(new SetConqueredCommand(this));
 
         this.getServer().getPluginManager().registerEvents(new ConquerorListener(this), this);
 
@@ -34,10 +32,11 @@ public final class TownyConquered extends JavaPlugin
         for (String tuuid : this.getConfig().getConfigurationSection("towns").getKeys(false))
         {
             final String nuuid = this.getConfig().getString(String.format("towns.%s.nation_uuid", tuuid));
+            final String ends = this.getConfig().getString(String.format("towns.%s.ends", tuuid));
             final String tax = this.getConfig().getString(String.format("towns.%s.tax", tuuid));
             final String taxType = this.getConfig().getString(String.format("towns.%s.tax_type", tuuid));
 
-            this.conqueredManager.getTowns().add(new ITown(UUID.fromString(tuuid), UUID.fromString(nuuid), tax, TaxType.fromLabel(taxType)));
+            this.conqueredManager.getListTowns().add(new ITown(UUID.fromString(tuuid), UUID.fromString(nuuid), ends, tax, TaxType.fromLabel(taxType)));
         }
     }
 

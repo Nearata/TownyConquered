@@ -6,13 +6,15 @@ public final class ITown
 {
     private final UUID townUUID;
     private final UUID nationUUID;
+    private String ends;
     private String tax;
     private TaxType taxType;
 
-    public ITown(UUID townUUID, UUID nationUUID, String tax, TaxType taxType)
+    public ITown(UUID townUUID, UUID nationUUID, String ends, String tax, TaxType taxType)
     {
         this.townUUID = townUUID;
         this.nationUUID = nationUUID;
+        this.ends = ends;
         this.tax = tax;
         this.taxType = taxType;
     }
@@ -25,6 +27,11 @@ public final class ITown
     public UUID getNationUUID()
     {
         return this.nationUUID;
+    }
+
+    public String getEnds()
+    {
+        return this.ends;
     }
 
     public String getTax()
