@@ -9,6 +9,12 @@ commands:
     description: Imposta la nazione che controlla la città
     usage: /setconquered [conquered_town] [new_nation] [days] [tax] [tax_type]
     permission: townyconquered.admin.command.setconquered
+  removeconquered:
+    description: Remove the town as conquered
+    usage: /removeconquered [town]
+    permission: townyconquered.admin.command.removeconquered
 permissions:
   townyconquered.admin.command.setconquered:
+    default: op
+  townyconquered.admin.command.removeconquered:
     default: op

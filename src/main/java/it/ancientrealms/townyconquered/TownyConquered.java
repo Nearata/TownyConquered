@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import it.ancientrealms.townyconquered.command.RemoveConqueredCommand;
 import it.ancientrealms.townyconquered.command.SetConqueredCommand;
 import it.ancientrealms.townyconquered.listener.ConquerorListener;
 import it.ancientrealms.townyconquered.manager.ConqueredManager;
@@ -24,6 +25,8 @@ public final class TownyConquered extends JavaPlugin
 
         this.getCommand("setconquered").setExecutor(new SetConqueredCommand(this));
         this.getCommand("setconquered").setTabCompleter(new SetConqueredCommand(this));
+        this.getCommand("removeconquered").setExecutor(new RemoveConqueredCommand(this));
+        this.getCommand("removeconquered").setTabCompleter(new RemoveConqueredCommand(this));
 
         this.getServer().getPluginManager().registerEvents(new ConquerorListener(this), this);
 

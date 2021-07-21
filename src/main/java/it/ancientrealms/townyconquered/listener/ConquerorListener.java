@@ -9,7 +9,6 @@ import java.util.Optional;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-import com.palmergames.bukkit.towny.TownyMessaging;
 import com.palmergames.bukkit.towny.TownySettings;
 import com.palmergames.bukkit.towny.TownyUniverse;
 import com.palmergames.bukkit.towny.event.NationRemoveTownEvent;
@@ -84,7 +83,6 @@ public final class ConquerorListener implements Listener
         if (itown.isPresent())
         {
             this.plugin.getConqueredManager().removeTown(town);
-            TownyMessaging.sendGlobalMessage(String.format("Your town is no longer under the control of the nation %s.", event.getNation().getName()));
         }
     }
 

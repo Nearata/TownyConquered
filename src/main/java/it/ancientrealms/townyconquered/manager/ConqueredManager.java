@@ -88,10 +88,11 @@ public final class ConqueredManager
         this.plugin.getConfig().set(String.format("towns.%s", town.getUUID()), null);
         this.plugin.saveConfig();
         this.plugin.reloadConfig();
-        
+
         try
         {
-            TownyMessaging.sendGlobalMessage(String.format("The town %s is no longer under the control of the nation %s.", town.getName(), town.getNation().getName()));
+            TownyMessaging.sendGlobalMessage(
+                    String.format("The town %s is no longer under the control of the nation %s.", town.getName(), town.getNation().getName()));
         }
         catch (NotRegisteredException e)
         {
