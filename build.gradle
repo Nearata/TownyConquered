@@ -22,3 +22,4 @@ java {
 java.toolchain.languageVersion = JavaLanguageVersion.of(16)
 version = '1.0.0'
 group = 'it.ancientrealms'
+compileJava.options.encoding = "UTF-8"

@@ -38,10 +38,10 @@ public final class SetConqueredCommand implements TabExecutor
         switch (args.length)
         {
         case 1:
-            StringUtil.copyPartialMatches(args[0], this.towny.getTowns().stream().map(n -> n.getName()).toList(), s);
+            StringUtil.copyPartialMatches(args[0], this.towny.getTowns().stream().map(t -> t.getName()).toList(), s);
             break;
         case 2:
-            StringUtil.copyPartialMatches(args[1], this.towny.getNations().stream().map(t -> t.getName()).toList(), s);
+            StringUtil.copyPartialMatches(args[1], this.towny.getNations().stream().map(n -> n.getName()).toList(), s);
             break;
         case 5:
             StringUtil.copyPartialMatches(args[4], Arrays.stream(TaxType.values()).map(t -> t.getLabel()).collect(Collectors.toList()), s);
