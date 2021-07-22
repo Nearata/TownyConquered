@@ -77,7 +77,7 @@ public final class ConqueredManager
         this.towns.add(new ITown(townUUID, nation.getUUID(), days, 0, tax, taxType));
 
         TownyMessaging
-                .sendGlobalMessage(this.plugin.getMessagesConfig().getString("town_conquered").formatted(town.getName(), nation.getName(), days));
+                .sendGlobalMessage(this.plugin.getMessagesManager().getConfig().getString("town_conquered").formatted(town.getName(), nation.getName(), days));
     }
 
     public void removeTown(Town town)
@@ -91,7 +91,8 @@ public final class ConqueredManager
         try
         {
             TownyMessaging
-                    .sendGlobalMessage(this.plugin.getMessagesConfig().getString("town_unconquered").formatted(town.getName(), town.getNation().getName()));
+                    .sendGlobalMessage(
+                            this.plugin.getMessagesManager().getConfig().getString("town_unconquered").formatted(town.getName(), town.getNation().getName()));
         }
         catch (NotRegisteredException e)
         {
@@ -122,5 +123,22 @@ public final class ConqueredManager
         this.plugin.getConfig().set(String.format("towns.%s.tax_type", tuuid), town.getTaxType().getLabel());
         this.plugin.saveConfig();
         this.plugin.reloadConfig();
+    }
+
+    public void reload()
+    {
+        this.towns.clear();
+        this.plugin.reloadConfig();
+
+        for (String tuuid : this.plugin.getConfig().getConfigurationSection("towns").getKeys(false))
+        {
+            final String nuuid = this.plugin.getConfig().getString(String.format("towns.%s.nation_uuid", tuuid));
+            final String days = this.plugin.getConfig().getString(String.format("towns.%s.days", tuuid));
+            final String count = this.plugin.getConfig().getString(String.format("towns.%s.count", tuuid));
+            final String tax = this.plugin.getConfig().getString(String.format("towns.%s.tax", tuuid));
+            final String taxType = this.plugin.getConfig().getString(String.format("towns.%s.tax_type", tuuid));
+
+            this.towns.add(new ITown(UUID.fromString(tuuid), UUID.fromString(nuuid), days, Integer.valueOf(count), tax, TaxType.fromLabel(taxType)));
+        }
     }
 }

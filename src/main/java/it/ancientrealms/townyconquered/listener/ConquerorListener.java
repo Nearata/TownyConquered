@@ -98,7 +98,7 @@ public final class ConquerorListener implements Listener
         if (this.plugin.getConqueredManager().getTown(town).isPresent())
         {
             event.setCancelled(true);
-            event.setCancelMessage(this.plugin.getMessagesConfig().getString("town_cannot_leave_nation_yet").formatted(event.getNationName()));
+            event.setCancelMessage(this.plugin.getMessagesManager().getConfig().getString("town_cannot_leave_nation_yet").formatted(event.getNationName()));
         }
     }
 }

@@ -6,15 +6,21 @@ depend:
   - Towny
 commands:
   setconquered:
-    description: Imposta la nazione che controlla la città
+    description: Imposta la nazione che controlla la città.
     usage: /setconquered [conquered_town] [new_nation] [days] [tax] [tax_type]
     permission: townyconquered.admin.command.setconquered
   removeconquered:
-    description: Rimuovi la città come conquistata
+    description: Rimuovi la città come conquistata.
     usage: /removeconquered [town]
     permission: townyconquered.admin.command.removeconquered
+  reload:
+    description: Ricarica i file di configurazione.
+    usage: /reload
+    permission: townyconquered.admin.command.reload
 permissions:
   townyconquered.admin.command.setconquered:
     default: op
   townyconquered.admin.command.removeconquered:
+    default: op
+  townyconquered.admin.command.reload:
     default: op

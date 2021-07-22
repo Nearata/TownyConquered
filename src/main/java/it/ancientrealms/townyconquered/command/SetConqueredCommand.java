@@ -72,25 +72,25 @@ public final class SetConqueredCommand implements TabExecutor
 
         if (town == null)
         {
-            TownyMessaging.sendErrorMsg(sender, this.plugin.getMessagesConfig().getString("town_not_found").formatted(tname));
+            TownyMessaging.sendErrorMsg(sender, this.plugin.getMessagesManager().getConfig().getString("town_not_found").formatted(tname));
             return true;
         }
 
         if (this.plugin.getConqueredManager().getTown(town).isPresent())
         {
-            TownyMessaging.sendErrorMsg(sender, this.plugin.getMessagesConfig().getString("town_already_conquered").formatted(tname));
+            TownyMessaging.sendErrorMsg(sender, this.plugin.getMessagesManager().getConfig().getString("town_already_conquered").formatted(tname));
             return true;
         }
 
         if (nation == null)
         {
-            TownyMessaging.sendErrorMsg(sender, this.plugin.getMessagesConfig().getString("nation_not_found").formatted(nname));
+            TownyMessaging.sendErrorMsg(sender, this.plugin.getMessagesManager().getConfig().getString("nation_not_found").formatted(nname));
             return true;
         }
 
         if (taxType == null)
         {
-            TownyMessaging.sendErrorMsg(sender, this.plugin.getMessagesConfig().getString("invalid_tax_type").formatted(taxName));
+            TownyMessaging.sendErrorMsg(sender, this.plugin.getMessagesManager().getConfig().getString("invalid_tax_type").formatted(taxName));
             return true;
         }
 
