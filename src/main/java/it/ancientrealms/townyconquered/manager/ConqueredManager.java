@@ -64,8 +64,7 @@ public final class ConqueredManager
 
         this.towns.add(new ITown(townUUID, nation.getUUID(), days, 0, tax, taxType));
 
-        TownyMessaging
-                .sendGlobalMessage(this.plugin.getMessagesManager().getConfig().getString("town_conquered").formatted(town.getName(), nation.getName(), days));
+        TownyMessaging.sendGlobalMessage(this.plugin.getMessagesManager().translate("town_conquered", town.getName(), nation.getName(), days));
     }
 
     public void removeTown(Town town)
@@ -80,7 +79,7 @@ public final class ConqueredManager
         {
             TownyMessaging
                     .sendGlobalMessage(
-                            this.plugin.getMessagesManager().getConfig().getString("town_unconquered").formatted(town.getName(), town.getNation().getName()));
+                            this.plugin.getMessagesManager().translate("town_unconquered", town.getName(), town.getNation().getName()));
         }
         catch (NotRegisteredException e)
         {

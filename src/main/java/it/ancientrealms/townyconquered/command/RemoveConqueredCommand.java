@@ -54,13 +54,13 @@ public final class RemoveConqueredCommand implements TabExecutor
 
         if (town == null)
         {
-            TownyMessaging.sendErrorMsg(sender, this.plugin.getMessagesManager().getConfig().getString("town_not_found").formatted(tname));
+            TownyMessaging.sendErrorMsg(sender, this.plugin.getMessagesManager().translate("town_not_found", tname));
             return true;
         }
 
         if (!this.plugin.getConqueredManager().getTown(town).isPresent())
         {
-            TownyMessaging.sendErrorMsg(sender, this.plugin.getMessagesManager().getConfig().getString("town_not_conquered").formatted(tname));
+            TownyMessaging.sendErrorMsg(sender, this.plugin.getMessagesManager().translate("town_not_conquered", tname));
             return true;
         }
 

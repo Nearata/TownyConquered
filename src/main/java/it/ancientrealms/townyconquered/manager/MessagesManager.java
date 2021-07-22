@@ -44,4 +44,9 @@ public final class MessagesManager
         {
         }
     }
+
+    public String translate(String key, String... args)
+    {
+        return this.config.getString(key).formatted(String.join(",", args));
+    }
 }

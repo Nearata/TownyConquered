@@ -68,7 +68,7 @@ public final class ConquerorListener implements Listener
         {
             final ITown ltown = itown.get();
             final int tax = Integer.valueOf(ltown.getTax());
-            final String fmt = this.plugin.getMessagesManager().getConfig().getString("tax_payment_to").formatted(event.getNation().getName());
+            final String fmt = this.plugin.getMessagesManager().translate("tax_payment_to", event.getNation().getName());
 
             double paid = tax;
 
@@ -84,7 +84,7 @@ public final class ConquerorListener implements Listener
             }
 
             TownyMessaging.sendPrefixedTownMessage(town,
-                    this.plugin.getMessagesManager().getConfig().getString("payed_tax").formatted(TownyEconomyHandler.getFormattedBalance(paid)));
+                    this.plugin.getMessagesManager().translate("payed_tax", TownyEconomyHandler.getFormattedBalance(paid)));
         }
     }
 
@@ -107,7 +107,7 @@ public final class ConquerorListener implements Listener
         if (this.plugin.getConqueredManager().getTown(town).isPresent())
         {
             event.setCancelled(true);
-            event.setCancelMessage(this.plugin.getMessagesManager().getConfig().getString("town_cannot_leave_nation_yet").formatted(event.getNationName()));
+            event.setCancelMessage(this.plugin.getMessagesManager().translate("town_cannot_leave_nation_yet", event.getNationName()));
         }
     }
 }

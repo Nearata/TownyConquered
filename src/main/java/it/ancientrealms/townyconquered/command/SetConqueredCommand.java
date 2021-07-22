@@ -62,35 +62,35 @@ public final class SetConqueredCommand implements TabExecutor
 
         final String tname = args[0];
         final String nname = args[1];
-        final String taxName = args[4];
+        final String taxname = args[4];
 
         final Town town = this.towny.getTown(tname);
         final Nation nation = this.towny.getNation(nname);
         final String days = args[2];
         final String tax = args[3];
-        final TaxType taxType = TaxType.fromLabel(taxName);
+        final TaxType taxType = TaxType.fromLabel(taxname);
 
         if (town == null)
         {
-            TownyMessaging.sendErrorMsg(sender, this.plugin.getMessagesManager().getConfig().getString("town_not_found").formatted(tname));
+            TownyMessaging.sendErrorMsg(sender, this.plugin.getMessagesManager().translate("town_not_found", tname));
             return true;
         }
 
         if (this.plugin.getConqueredManager().getTown(town).isPresent())
         {
-            TownyMessaging.sendErrorMsg(sender, this.plugin.getMessagesManager().getConfig().getString("town_already_conquered").formatted(tname));
+            TownyMessaging.sendErrorMsg(sender, this.plugin.getMessagesManager().translate("town_already_conquered", tname));
             return true;
         }
 
         if (nation == null)
         {
-            TownyMessaging.sendErrorMsg(sender, this.plugin.getMessagesManager().getConfig().getString("nation_not_found").formatted(nname));
+            TownyMessaging.sendErrorMsg(sender, this.plugin.getMessagesManager().translate("nation_not_found", nname));
             return true;
         }
 
         if (taxType == null)
         {
-            TownyMessaging.sendErrorMsg(sender, this.plugin.getMessagesManager().getConfig().getString("invalid_tax_type").formatted(taxName));
+            TownyMessaging.sendErrorMsg(sender, this.plugin.getMessagesManager().translate("invalid_tax_type", taxname));
             return true;
         }
 
