@@ -17,7 +17,7 @@ import com.palmergames.bukkit.towny.event.nation.NationPreTownLeaveEvent;
 import com.palmergames.bukkit.towny.event.time.dailytaxes.PreTownPaysNationTaxEvent;
 import com.palmergames.bukkit.towny.object.Town;
 
-import it.ancientrealms.townyconquered.ITown;
+import it.ancientrealms.townyconquered.ConqueredTown;
 import it.ancientrealms.townyconquered.TownyConquered;
 
 public final class ConquerorListener implements Listener
@@ -33,9 +33,9 @@ public final class ConquerorListener implements Listener
     @EventHandler
     public void preNewDay(PreNewDayEvent event)
     {
-        List<ITown> remove = new ArrayList<>();
+        List<ConqueredTown> remove = new ArrayList<>();
 
-        for (ITown t : this.plugin.getConqueredManager().getListTowns())
+        for (ConqueredTown t : this.plugin.getConqueredManager().getListTowns())
         {
             t.incrementCount();
 
@@ -52,7 +52,7 @@ public final class ConquerorListener implements Listener
             }
         }
 
-        for (ITown t : remove)
+        for (ConqueredTown t : remove)
         {
             this.plugin.getConqueredManager().removeTown(this.towny.getTown(t.getTownUUID()));
         }
@@ -62,17 +62,17 @@ public final class ConquerorListener implements Listener
     public void preTownPaysNationTax(PreTownPaysNationTaxEvent event)
     {
         final Town town = event.getTown();
-        final Optional<ITown> itown = this.plugin.getConqueredManager().getTown(town);
+        final Optional<ConqueredTown> conqueredtown = this.plugin.getConqueredManager().getTown(town);
 
-        if (itown.isPresent())
+        if (conqueredtown.isPresent())
         {
-            final ITown ltown = itown.get();
-            final int tax = Integer.valueOf(ltown.getTax());
+            final ConqueredTown ctown = conqueredtown.get();
+            final int tax = Integer.valueOf(ctown.getTax());
             final String fmt = this.plugin.getMessagesManager().translate("tax_payment_to", event.getNation().getName());
 
             double paid = tax;
 
-            switch (ltown.getTaxType())
+            switch (ctown.getTaxType())
             {
             case PERCENTAGE:
                 paid = tax * TownySettings.getTownUpkeepCost(town) / 100;

@@ -2,7 +2,7 @@ package it.ancientrealms.townyconquered;
 
 import java.util.UUID;
 
-public final class ITown
+public final class ConqueredTown
 {
     private final UUID townUUID;
     private final UUID nationUUID;
@@ -11,7 +11,7 @@ public final class ITown
     private final String tax;
     private final TaxType taxType;
 
-    public ITown(UUID townUUID, UUID nationUUID, String days, int count, String tax, TaxType taxType)
+    public ConqueredTown(UUID townUUID, UUID nationUUID, String days, int count, String tax, TaxType taxType)
     {
         this.townUUID = townUUID;
         this.nationUUID = nationUUID;

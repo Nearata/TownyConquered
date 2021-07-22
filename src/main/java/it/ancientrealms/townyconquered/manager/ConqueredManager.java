@@ -12,7 +12,7 @@ import com.palmergames.bukkit.towny.exceptions.NotRegisteredException;
 import com.palmergames.bukkit.towny.object.Nation;
 import com.palmergames.bukkit.towny.object.Town;
 
-import it.ancientrealms.townyconquered.ITown;
+import it.ancientrealms.townyconquered.ConqueredTown;
 import it.ancientrealms.townyconquered.TaxType;
 import it.ancientrealms.townyconquered.TownyConquered;
 
@@ -20,7 +20,7 @@ public final class ConqueredManager
 {
     private final TownyConquered plugin;
     private final TownyUniverse towny = TownyUniverse.getInstance();
-    private List<ITown> towns = new ArrayList<>();
+    private List<ConqueredTown> towns = new ArrayList<>();
 
     public ConqueredManager(TownyConquered plugin)
     {
@@ -62,7 +62,7 @@ public final class ConqueredManager
         this.plugin.saveConfig();
         this.plugin.reloadConfig();
 
-        this.towns.add(new ITown(townUUID, nation.getUUID(), days, 0, tax, taxType));
+        this.towns.add(new ConqueredTown(townUUID, nation.getUUID(), days, 0, tax, taxType));
 
         TownyMessaging.sendGlobalMessage(this.plugin.getMessagesManager().translate("town_conquered", town.getName(), nation.getName(), days));
     }
@@ -89,17 +89,17 @@ public final class ConqueredManager
         town.save();
     }
 
-    public Optional<ITown> getTown(Town town)
+    public Optional<ConqueredTown> getTown(Town town)
     {
         return this.towns.stream().filter(t -> t.getTownUUID().equals(town.getUUID())).findAny();
     }
 
-    public List<ITown> getListTowns()
+    public List<ConqueredTown> getListTowns()
     {
         return this.towns;
     }
 
-    public void save(ITown town)
+    public void save(ConqueredTown town)
     {
         final UUID tuuid = town.getTownUUID();
 
@@ -125,7 +125,7 @@ public final class ConqueredManager
             final String tax = this.plugin.getConfig().getString(String.format("towns.%s.tax", tuuid));
             final String taxType = this.plugin.getConfig().getString(String.format("towns.%s.tax_type", tuuid));
 
-            this.towns.add(new ITown(UUID.fromString(tuuid), UUID.fromString(nuuid), days, Integer.valueOf(count), tax, TaxType.fromLabel(taxType)));
+            this.towns.add(new ConqueredTown(UUID.fromString(tuuid), UUID.fromString(nuuid), days, Integer.valueOf(count), tax, TaxType.fromLabel(taxType)));
         }
     }
 }
