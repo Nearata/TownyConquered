@@ -3,7 +3,6 @@ package it.ancientrealms.townyconquered.command;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -44,7 +43,7 @@ public final class SetConqueredCommand implements TabExecutor
             StringUtil.copyPartialMatches(args[1], this.towny.getNations().stream().map(n -> n.getName()).toList(), s);
             break;
         case 5:
-            StringUtil.copyPartialMatches(args[4], Arrays.stream(TaxType.values()).map(t -> t.getLabel()).collect(Collectors.toList()), s);
+            StringUtil.copyPartialMatches(args[4], Arrays.stream(TaxType.values()).map(t -> t.getLabel()).toList(), s);
             break;
         }
 
