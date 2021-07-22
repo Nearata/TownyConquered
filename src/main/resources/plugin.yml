@@ -7,11 +7,11 @@ depend:
 commands:
   setconquered:
     description: Imposta la nazione che controlla la città.
-    usage: /setconquered [conquered_town] [new_nation] [days] [tax] [tax_type]
+    usage: /setconquered [città_occupata] [nazione_occupante] [giorni] [tassa] [tipo_tassa]
     permission: townyconquered.admin.command.setconquered
   removeconquered:
     description: Rimuovi la città come conquistata.
-    usage: /removeconquered [town]
+    usage: /removeconquered [città]
     permission: townyconquered.admin.command.removeconquered
   reload:
     description: Ricarica i file di configurazione.
