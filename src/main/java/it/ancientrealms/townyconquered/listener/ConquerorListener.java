@@ -66,14 +66,15 @@ public final class ConquerorListener implements Listener
         {
             final ITown ltown = itown.get();
             final int tax = Integer.valueOf(ltown.getTax());
+            final String fmt = this.plugin.getMessagesManager().getConfig().getString("tax_payment").formatted(event.getNation().getName());
 
             switch (ltown.getTaxType())
             {
             case PERCENTAGE:
-                event.setTax(tax * TownySettings.getTownUpkeepCost(town) / 100);
+                town.getAccount().payTo(tax * TownySettings.getTownUpkeepCost(town) / 100, event.getNation(), fmt);
                 break;
             case FIXED:
-                event.setTax(tax);
+                town.getAccount().payTo(tax, event.getNation(), fmt);
                 break;
             }
         }

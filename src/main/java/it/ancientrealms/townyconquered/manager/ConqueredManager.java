@@ -41,7 +41,7 @@ public final class ConqueredManager
                 this.towny.getDataSource().deleteNation(oldNation);
             }
         }
-        
+
         try
         {
             town.setNation(nation);
@@ -49,7 +49,7 @@ public final class ConqueredManager
         catch (AlreadyRegisteredException e)
         {
         }
-        
+
         town.save();
         nation.save();
         oldNation.save();

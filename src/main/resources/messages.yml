@@ -7,3 +7,4 @@ town_conquered: La città %s è ora sotto il dominio nella nazione %s per %s gio
 town_unconquered: La città %s non è più sotto il dominio della nazione %s.
 town_cannot_leave_nation_yet: La tua città è ancora sotto il dominio della nazione %s.
 reload_success: Tutti i file di configurazione sono stati ricaricati.
+tax_payment: Quota di occupazione alla nazione %s.
