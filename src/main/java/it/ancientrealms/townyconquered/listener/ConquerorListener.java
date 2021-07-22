@@ -7,6 +7,8 @@ import java.util.Optional;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
+import com.palmergames.bukkit.towny.TownyEconomyHandler;
+import com.palmergames.bukkit.towny.TownyMessaging;
 import com.palmergames.bukkit.towny.TownySettings;
 import com.palmergames.bukkit.towny.TownyUniverse;
 import com.palmergames.bukkit.towny.event.NationRemoveTownEvent;
@@ -66,17 +68,23 @@ public final class ConquerorListener implements Listener
         {
             final ITown ltown = itown.get();
             final int tax = Integer.valueOf(ltown.getTax());
-            final String fmt = this.plugin.getMessagesManager().getConfig().getString("tax_payment").formatted(event.getNation().getName());
+            final String fmt = this.plugin.getMessagesManager().getConfig().getString("tax_payment_to").formatted(event.getNation().getName());
+
+            double paid = tax;
 
             switch (ltown.getTaxType())
             {
             case PERCENTAGE:
+                paid = tax * TownySettings.getTownUpkeepCost(town) / 100;
                 town.getAccount().payTo(tax * TownySettings.getTownUpkeepCost(town) / 100, event.getNation(), fmt);
                 break;
             case FIXED:
                 town.getAccount().payTo(tax, event.getNation(), fmt);
                 break;
             }
+
+            TownyMessaging.sendPrefixedTownMessage(town,
+                    this.plugin.getMessagesManager().getConfig().getString("payed_tax").formatted(TownyEconomyHandler.getFormattedBalance(paid)));
         }
     }
 
