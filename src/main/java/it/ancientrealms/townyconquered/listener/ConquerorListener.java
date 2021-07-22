@@ -1,7 +1,5 @@
 package it.ancientrealms.townyconquered.listener;
 
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -37,11 +35,18 @@ public final class ConquerorListener implements Listener
 
         for (ITown t : this.plugin.getConqueredManager().getListTowns())
         {
-            final Instant ends = Timestamp.valueOf(t.getEnds()).toInstant();
+            t.incrementCount();
 
-            if (Instant.now().isAfter(ends))
+            final int current = t.getCount();
+            final int end = Integer.valueOf(t.getDays());
+
+            if (current > end)
             {
                 remove.add(t);
+            }
+            else
+            {
+                this.plugin.getConqueredManager().save(t);
             }
         }
 
@@ -93,7 +98,7 @@ public final class ConquerorListener implements Listener
         if (this.plugin.getConqueredManager().getTown(town).isPresent())
         {
             event.setCancelled(true);
-            event.setCancelMessage("Your town can't leave the nation.");
+            event.setCancelMessage(this.plugin.getMessagesConfig().getString("town_cannot_leave_nation_yet").formatted(event.getNationName()));
         }
     }
 }

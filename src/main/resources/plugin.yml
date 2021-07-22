@@ -10,7 +10,7 @@ commands:
     usage: /setconquered [conquered_town] [new_nation] [days] [tax] [tax_type]
     permission: townyconquered.admin.command.setconquered
   removeconquered:
-    description: Remove the town as conquered
+    description: Rimuovi la città come conquistata
     usage: /removeconquered [town]
     permission: townyconquered.admin.command.removeconquered
 permissions:

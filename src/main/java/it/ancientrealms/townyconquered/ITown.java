@@ -6,15 +6,17 @@ public final class ITown
 {
     private final UUID townUUID;
     private final UUID nationUUID;
-    private final String ends;
+    private final String days;
+    private int count;
     private final String tax;
     private final TaxType taxType;
 
-    public ITown(UUID townUUID, UUID nationUUID, String ends, String tax, TaxType taxType)
+    public ITown(UUID townUUID, UUID nationUUID, String days, int count, String tax, TaxType taxType)
     {
         this.townUUID = townUUID;
         this.nationUUID = nationUUID;
-        this.ends = ends;
+        this.days = days;
+        this.count = count;
         this.tax = tax;
         this.taxType = taxType;
     }
@@ -29,9 +31,14 @@ public final class ITown
         return this.nationUUID;
     }
 
-    public String getEnds()
+    public String getDays()
     {
-        return this.ends;
+        return this.days;
+    }
+
+    public int getCount()
+    {
+        return this.count;
     }
 
     public String getTax()
@@ -42,5 +49,10 @@ public final class ITown
     public TaxType getTaxType()
     {
         return this.taxType;
+    }
+
+    public void incrementCount()
+    {
+        this.count++;
     }
 }

@@ -40,11 +40,13 @@ public final class TownyConquered extends JavaPlugin
         for (String tuuid : this.getConfig().getConfigurationSection("towns").getKeys(false))
         {
             final String nuuid = this.getConfig().getString(String.format("towns.%s.nation_uuid", tuuid));
-            final String ends = this.getConfig().getString(String.format("towns.%s.ends", tuuid));
+            final String days = this.getConfig().getString(String.format("towns.%s.days", tuuid));
+            final String count = this.getConfig().getString(String.format("towns.%s.count", tuuid));
             final String tax = this.getConfig().getString(String.format("towns.%s.tax", tuuid));
             final String taxType = this.getConfig().getString(String.format("towns.%s.tax_type", tuuid));
 
-            this.conqueredManager.getListTowns().add(new ITown(UUID.fromString(tuuid), UUID.fromString(nuuid), ends, tax, TaxType.fromLabel(taxType)));
+            this.conqueredManager.getListTowns()
+                    .add(new ITown(UUID.fromString(tuuid), UUID.fromString(nuuid), days, Integer.valueOf(count), tax, TaxType.fromLabel(taxType)));
         }
 
         this.messagesFile = new File(this.getDataFolder(), "messages.yml");
