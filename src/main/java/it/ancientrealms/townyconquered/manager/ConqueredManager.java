@@ -30,21 +30,18 @@ public final class ConqueredManager
     public void addConqueror(Town town, Nation nation, String days, String tax, TaxType taxType)
     {
         final UUID townUUID = town.getUUID();
+        final Nation oldNation = town.getNationOrNull();
 
-        Nation oldNation = null;
-        if (town.hasNation())
+        if (oldNation != null)
         {
-            try
-            {
-                oldNation = town.getNation();
+            town.removeNation();
 
-                town.removeNation();
-            }
-            catch (NotRegisteredException e)
+            if (oldNation.getTowns().isEmpty())
             {
+                this.towny.getDataSource().deleteNation(oldNation);
             }
         }
-
+        
         try
         {
             town.setNation(nation);
@@ -52,19 +49,10 @@ public final class ConqueredManager
         catch (AlreadyRegisteredException e)
         {
         }
-
+        
         town.save();
         nation.save();
-
-        if (oldNation != null)
-        {
-            oldNation.save();
-
-            if (oldNation.getTowns().isEmpty())
-            {
-                this.towny.getDataSource().deleteNation(oldNation);
-            }
-        }
+        oldNation.save();
 
         this.plugin.getConfig().set(String.format("towns.%s.nation_uuid", townUUID), nation.getUUID().toString());
         this.plugin.getConfig().set(String.format("towns.%s.days", townUUID), days);
