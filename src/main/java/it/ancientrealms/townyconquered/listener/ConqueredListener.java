@@ -20,12 +20,12 @@ import com.palmergames.bukkit.towny.object.Town;
 import it.ancientrealms.townyconquered.ConqueredTown;
 import it.ancientrealms.townyconquered.TownyConquered;
 
-public final class ConquerorListener implements Listener
+public final class ConqueredListener implements Listener
 {
     private final TownyConquered plugin;
     private final TownyUniverse towny = TownyUniverse.getInstance();
 
-    public ConquerorListener(TownyConquered plugin)
+    public ConqueredListener(TownyConquered plugin)
     {
         this.plugin = plugin;
     }
