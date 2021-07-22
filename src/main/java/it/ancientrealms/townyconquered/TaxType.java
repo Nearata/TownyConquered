@@ -1,4 +1,4 @@
-package it.ancientrealms.townyconquered.manager;
+package it.ancientrealms.townyconquered;
 
 public enum TaxType
 {

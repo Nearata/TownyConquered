@@ -49,17 +49,18 @@ public final class RemoveConqueredCommand implements TabExecutor
             return true;
         }
 
-        final Town town = this.towny.getTown(args[0]);
+        final String tname = args[0];
+        final Town town = this.towny.getTown(tname);
 
         if (town == null)
         {
-            TownyMessaging.sendErrorMsg(sender, "The town doesn't exist.");
+            TownyMessaging.sendErrorMsg(sender, this.plugin.getMessagesConfig().getString("town_not_found").formatted(tname));
             return true;
         }
 
         if (!this.plugin.getConqueredManager().getTown(town).isPresent())
         {
-            TownyMessaging.sendErrorMsg(sender, "This town is not conquered.");
+            TownyMessaging.sendErrorMsg(sender, this.plugin.getMessagesConfig().getString("town_not_conquered").formatted(tname));
             return true;
         }
 

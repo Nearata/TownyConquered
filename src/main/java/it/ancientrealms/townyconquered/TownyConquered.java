@@ -1,20 +1,25 @@
 package it.ancientrealms.townyconquered;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.UUID;
 
+import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import it.ancientrealms.townyconquered.command.RemoveConqueredCommand;
 import it.ancientrealms.townyconquered.command.SetConqueredCommand;
 import it.ancientrealms.townyconquered.listener.ConquerorListener;
 import it.ancientrealms.townyconquered.manager.ConqueredManager;
-import it.ancientrealms.townyconquered.manager.ITown;
-import it.ancientrealms.townyconquered.manager.TaxType;
 
 public final class TownyConquered extends JavaPlugin
 {
     private static TownyConquered INSTANCE;
     private ConqueredManager conqueredManager;
+    private File messagesFile;
+    private FileConfiguration messagesConfig;
 
     @Override
     public void onEnable()
@@ -41,6 +46,22 @@ public final class TownyConquered extends JavaPlugin
 
             this.conqueredManager.getListTowns().add(new ITown(UUID.fromString(tuuid), UUID.fromString(nuuid), ends, tax, TaxType.fromLabel(taxType)));
         }
+
+        this.messagesFile = new File(this.getDataFolder(), "messages.yml");
+
+        if (!this.messagesFile.exists())
+        {
+            this.saveResource("messages.yml", false);
+        }
+
+        this.messagesConfig = new YamlConfiguration();
+        try
+        {
+            this.messagesConfig.load(this.messagesFile);
+        }
+        catch (IOException | InvalidConfigurationException e)
+        {
+        }
     }
 
     @Override
@@ -56,5 +77,10 @@ public final class TownyConquered extends JavaPlugin
     public ConqueredManager getConqueredManager()
     {
         return this.conqueredManager;
+    }
+
+    public FileConfiguration getMessagesConfig()
+    {
+        return this.messagesConfig;
     }
 }

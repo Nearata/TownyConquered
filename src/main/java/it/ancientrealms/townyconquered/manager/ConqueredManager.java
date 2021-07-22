@@ -15,6 +15,8 @@ import com.palmergames.bukkit.towny.exceptions.NotRegisteredException;
 import com.palmergames.bukkit.towny.object.Nation;
 import com.palmergames.bukkit.towny.object.Town;
 
+import it.ancientrealms.townyconquered.ITown;
+import it.ancientrealms.townyconquered.TaxType;
 import it.ancientrealms.townyconquered.TownyConquered;
 
 public final class ConqueredManager
@@ -79,7 +81,7 @@ public final class ConqueredManager
         this.towns.add(new ITown(townUUID, nation.getUUID(), ends, tax, taxType));
 
         TownyMessaging
-                .sendGlobalMessage(String.format("The town %s is now under the control of the nation %s for %s days.", town.getName(), nation.getName(), days));
+                .sendGlobalMessage(this.plugin.getMessagesConfig().getString("town_conquered").formatted(town.getName(), nation.getName(), days));
     }
 
     public void removeTown(Town town)
@@ -91,8 +93,8 @@ public final class ConqueredManager
 
         try
         {
-            TownyMessaging.sendGlobalMessage(
-                    String.format("The town %s is no longer under the control of the nation %s.", town.getName(), town.getNation().getName()));
+            TownyMessaging
+                    .sendGlobalMessage(this.plugin.getMessagesConfig().getString("town_unconquered").formatted(town.getName(), town.getNation().getName()));
         }
         catch (NotRegisteredException e)
         {

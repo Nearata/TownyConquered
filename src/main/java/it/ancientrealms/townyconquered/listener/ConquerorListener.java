@@ -17,8 +17,8 @@ import com.palmergames.bukkit.towny.event.nation.NationPreTownLeaveEvent;
 import com.palmergames.bukkit.towny.event.time.dailytaxes.PreTownPaysNationTaxEvent;
 import com.palmergames.bukkit.towny.object.Town;
 
+import it.ancientrealms.townyconquered.ITown;
 import it.ancientrealms.townyconquered.TownyConquered;
-import it.ancientrealms.townyconquered.manager.ITown;
 
 public final class ConquerorListener implements Listener
 {

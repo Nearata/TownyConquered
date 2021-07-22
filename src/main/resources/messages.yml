@@ -1,0 +1,7 @@
+town_not_found: La città %s non esiste.
+town_not_conquered: La città %s non è conquistata.
+town_already_conquered: La città %s è già conquistata.
+nation_not_found: La nazione %s non esiste.
+invalid_tax_type: La tassa %s non esiste.
+town_conquered: La città %s è ora sotto il dominio nella nazione %s per %s giorni.
+town_unconquered: La città %s non è più sotto il dominio della nazione %s.

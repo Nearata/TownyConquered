@@ -17,8 +17,8 @@ import com.palmergames.bukkit.towny.TownyUniverse;
 import com.palmergames.bukkit.towny.object.Nation;
 import com.palmergames.bukkit.towny.object.Town;
 
+import it.ancientrealms.townyconquered.TaxType;
 import it.ancientrealms.townyconquered.TownyConquered;
-import it.ancientrealms.townyconquered.manager.TaxType;
 
 public final class SetConqueredCommand implements TabExecutor
 {
@@ -60,33 +60,37 @@ public final class SetConqueredCommand implements TabExecutor
             return true;
         }
 
-        final Town town = this.towny.getTown(args[0]);
-        final Nation nation = this.towny.getNation(args[1]);
+        final String tname = args[0];
+        final String nname = args[1];
+        final String taxName = args[4];
+
+        final Town town = this.towny.getTown(tname);
+        final Nation nation = this.towny.getNation(nname);
         final String days = args[2];
         final String tax = args[3];
-        final TaxType taxType = TaxType.fromLabel(args[4]);
+        final TaxType taxType = TaxType.fromLabel(taxName);
 
         if (town == null)
         {
-            TownyMessaging.sendErrorMsg(sender, "This town doesn't exist.");
+            TownyMessaging.sendErrorMsg(sender, this.plugin.getMessagesConfig().getString("town_not_found").formatted(tname));
             return true;
         }
 
         if (this.plugin.getConqueredManager().getTown(town).isPresent())
         {
-            TownyMessaging.sendErrorMsg(sender, "This town is already conquered.");
+            TownyMessaging.sendErrorMsg(sender, this.plugin.getMessagesConfig().getString("town_already_conquered").formatted(tname));
             return true;
         }
 
         if (nation == null)
         {
-            TownyMessaging.sendErrorMsg(sender, "This nation doesn't exist.");
+            TownyMessaging.sendErrorMsg(sender, this.plugin.getMessagesConfig().getString("nation_not_found").formatted(nname));
             return true;
         }
 
         if (taxType == null)
         {
-            TownyMessaging.sendErrorMsg(sender, "This type of tax doesn't exist.");
+            TownyMessaging.sendErrorMsg(sender, this.plugin.getMessagesConfig().getString("invalid_tax_type").formatted(taxName));
             return true;
         }
 
